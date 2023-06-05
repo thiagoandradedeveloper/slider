@@ -1,4 +1,67 @@
+:root{
+    --sizeh:400px;
+    --sizew:600px;
+}
+.containerImg{    
+    position: relative;
+    width: 600px;
+    height: 400px;
+    border: thin solid black;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
 img{
-    width: 300px;
-    height: 200px;
+    position: absolute;
+    width: var(--sizew);
+    height: var(--sizeh);
+    left:-600px;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    transition: 0s;
+    z-index: 1;
+}
+.btnsControler{
+    background: url('img/fundo.png');
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    border: none;
+    width: 80px;
+    color: #fff;
+    height: 100%;
+    display: none;
+    cursor: pointer;
+}
+.avancar{
+    left: auto;
+    right: 0;
+    margin-left: 150px;
+}
+.containerImg:hover .btnsControler{
+    display: block;
+}
+.containerMiniatura{
+    position: relative;
+    background: url('img/fundo.png');
+    width: auto;
+    z-index: 2;
+    padding: 10px;
+    color: white;
+    --tamanho: 30px;
+    height: var(--tamanho);
+    top:  calc(100% - var(--tamanho) - 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.containerImg:hover .containerMiniatura{
+    display: flex;
 }
