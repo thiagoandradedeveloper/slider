@@ -1,6 +1,6 @@
 :root{
-    --sizeh:640px;
-    --sizew:100%;
+    --sizeh:400px;
+    --sizew:800px;
 }
 .containerImg *{
     margin: 0;

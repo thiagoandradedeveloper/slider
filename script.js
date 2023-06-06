@@ -11,9 +11,27 @@ window.onload = function(){
     let imagens = document.querySelectorAll(".containerImg img");
     let btns = document.querySelectorAll(".containerImg button");
     let mudar = mudar2 = true;
-    let time  = 2000;
+    let time  = 4000;
+    let autoPlay
 
-    for(img of imagens){ img.style.left = "-100%" }
+    containerAll.addEventListener("mouseout",()=>{
+        autoPlay = setInterval(avancar,time)
+    })
+    containerAll.addEventListener("mouseover",()=>{
+        clearInterval(autoPlay)
+    })
+
+    for(img of imagens){ 
+        img.style.left = "-100%"
+        img.onclick = function(e){
+            if(e.srcElement.getAttribute("data-url") != null){
+                if(e.srcElement.getAttribute("data-linkMode") == null)
+                    window.location = e.srcElement.getAttribute("data-url")
+                else
+                    window.open(e.srcElement.getAttribute("data-url"), e.srcElement.getAttribute("data-linkMode"))
+            }
+        }
+    }
     imagens[posicao].style.transition = '0s';
     imagens[posicao].style.left = '0';
 
@@ -68,8 +86,8 @@ window.onload = function(){
                 imagens[proxima].style.transition = '1s';
                 imagens[proxima].style.left = '0';
                 posicao = ajusteValor(posicao + 1);
-            },1)
-            setTimeout(()=>mudar = true,time+1)           
+            },100)
+            setTimeout(()=>mudar = true,100)           
         }
     }
     function voltar(){
@@ -102,7 +120,7 @@ window.onload = function(){
                 imagens[proxima].style.left = '0';
                 posicao = ajusteValor(posicao - 1);
             },1)
-            setTimeout(()=>mudar = true,time+1)            
+            setTimeout(()=>mudar = true,100)            
         }
     }
     
@@ -140,8 +158,11 @@ window.onload = function(){
         }
     }
 
+    autoPlay = setInterval(avancar,time)
+
     document.onkeyup = (e) =>{ 
         if(e.key == "ArrowRight"){ avancar() }
-        if(e.key == "ArrowLeft") { voltar()  }   
-    }    
-}
+        if(e.key == "ArrowLeft") { voltar()  }  
+    }
+}    
+
