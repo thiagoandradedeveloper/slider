@@ -12,6 +12,21 @@ window.onload = function(){
     let btns = document.querySelectorAll(".containerImg button");
     let mudar = mudar2 = true;
     let time  = 4000;
+    let autoPlay = 0;
+    let entrada = true
+
+    containerAll.addEventListener("mouseout",()=>{
+        autoPlay = setInterval(avancar,time)
+    })
+    containerAll.addEventListener("mouseover",()=>{
+        clearInterval(autoPlay)
+    })
+    window.addEventListener("blur",()=>{
+        clearInterval(autoPlay)
+    })
+    window.addEventListener("focus",()=>{
+        if(!entrada) autoPlay = setInterval(avancar,time)
+    })
 
     for(img of imagens){ 
         img.style.left = "-100%"
@@ -36,7 +51,7 @@ window.onload = function(){
     btns[0].onclick = () => voltar()
     btns[1].onclick = () => avancar()
     
-    function avancar(next){
+    function avancar(next){        
 
         let contador1 = 0;
         for(img of imagens){
@@ -55,6 +70,7 @@ window.onload = function(){
         
         if(mudar && mudar2){
 
+            entrada = false
             mudar = false
 
             if(next == undefined){
@@ -67,8 +83,6 @@ window.onload = function(){
             imagens[posicao].style.left = '0';
             imagens[proxima].style.transition = '0s';
             imagens[proxima].style.left = '100%';
-
-            while(imagens[proxima].style.left != '100%' && imagens[posicao].style.left != '0px'){}
 
             let botoesGuia = document.querySelectorAll('.divMini')
             for(botao of botoesGuia){ botao.style.border = "thin solid blue" }
@@ -151,6 +165,8 @@ window.onload = function(){
             this.style.border = "thin solid red"
         }
     }
+
+    autoPlay = setInterval(avancar,time)
 
     document.onkeyup = (e) =>{ 
         if(e.key == "ArrowRight"){ avancar() }
