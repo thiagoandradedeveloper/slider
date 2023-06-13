@@ -19,7 +19,7 @@ body{
     left: 0;
     top: 0;
 }
-.containerImg{    
+.containerImg{  
     position: relative;
     width: var(--sizew);
     height: var(--sizeh);

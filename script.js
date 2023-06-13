@@ -13,7 +13,7 @@ window.onload = function(){
     let mudar = mudar2 = true;
     let time  = 4000;
     let autoPlay = 0;
-    let entrada = true
+    let entrada = true;
 
     containerAll.addEventListener("mouseout",()=>{
         autoPlay = setInterval(avancar,time)
@@ -94,7 +94,9 @@ window.onload = function(){
                 imagens[proxima].style.transition = '1s';
                 imagens[proxima].style.left = '0';
                 posicao = ajusteValor(posicao + 1);
-                mudar = true
+                mudar = true;
+                ajuste()
+
             },100)
         }
     }
@@ -172,5 +174,15 @@ window.onload = function(){
         if(e.key == "ArrowRight"){ avancar() }
         if(e.key == "ArrowLeft") { voltar()  }  
     }
+    function ajuste(){
+        for(img of imagens){
+            if(img.style.left == "0px") {
+                img.style.zIndex = '2'
+            } else {
+                img.style.zIndex = '1'
+            }
+        }
+    }
+    ajuste();
 }    
 
