@@ -29,7 +29,7 @@ window.onload = function(){
     })
 
     for(img of imagens){ 
-        img.style.left = "-100%"
+        img.style.left = 'calc(-100% + -2px)'
         img.onclick = function(e){
             if(e.srcElement.getAttribute("data-url") != null){
                 if(e.srcElement.getAttribute("data-linkMode") == null)
@@ -90,7 +90,7 @@ window.onload = function(){
 
             setTimeout(()=>{
                 imagens[posicao].style.transition = '1s';
-                imagens[posicao].style.left = '-100%';
+                imagens[posicao].style.left = 'calc(-100% + -2px)';
                 imagens[proxima].style.transition = '1s';
                 imagens[proxima].style.left = '0';
                 posicao = ajusteValor(posicao + 1);
@@ -117,7 +117,7 @@ window.onload = function(){
             imagens[posicao].style.transition = '0s';
             imagens[posicao].style.left = '0';
             imagens[proxima].style.transition = '0s';
-            imagens[proxima].style.left = '-100%';
+            imagens[proxima].style.left = 'calc(-100% + -2px)';
 
             let botoesGuia = document.querySelectorAll('.divMini');
             for(botao of botoesGuia){ botao.style.border = "thin solid blue" }
