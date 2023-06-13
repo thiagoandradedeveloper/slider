@@ -104,24 +104,24 @@ window.onload = function(){
 
         let contador1 = 0;
         for(img of imagens){
-            if(img.style.left == "0px") posicao = contador1
+            if(img.style.left == "0px") posicao = contador1;
             contador1++;
         }
 
         if(mudar){
 
-            mudar = false
+            mudar = false;
 
-            proxima = ajusteValor(posicao - 1)
+            proxima = ajusteValor(posicao - 1);
 
             imagens[posicao].style.transition = '0s';
             imagens[posicao].style.left = '0';
             imagens[proxima].style.transition = '0s';
             imagens[proxima].style.left = '-100%';
 
-            let botoesGuia = document.querySelectorAll('.divMini')
+            let botoesGuia = document.querySelectorAll('.divMini');
             for(botao of botoesGuia){ botao.style.border = "thin solid blue" }
-            botoesGuia[proxima].style.border = "thin solid red"
+            botoesGuia[proxima].style.border = "thin solid red";
 
             setTimeout(()=>{
                 imagens[posicao].style.transition = '1s';
@@ -129,14 +129,14 @@ window.onload = function(){
                 imagens[proxima].style.transition = '1s';
                 imagens[proxima].style.left = '0';
                 posicao = ajusteValor(posicao - 1);
-                mudar = true
+                mudar = true;
             },100)
         }
     }
     
-    let containerMiniatura = document.getElementById("containerMiniatura")
-    conteudo = ""
-    contador = 0
+    let containerMiniatura = document.getElementById("containerMiniatura");
+    conteudo = "";
+    contador = 0;
     
     for(image of imagens){
         
@@ -155,8 +155,8 @@ window.onload = function(){
         contador++
     }
     
-    containerMiniatura.innerHTML = conteudo
-    document.getElementById('dm0').style.border = "thin solid red"
+    containerMiniatura.innerHTML = conteudo;
+    document.getElementById('dm0').style.border = "thin solid red";
 
     let botoesGuia = document.querySelectorAll('.divMini')
     for(botao of botoesGuia){
@@ -164,7 +164,7 @@ window.onload = function(){
         botao.onclick = function(e){
             for(botao of botoesGuia){ botao.style.border = "thin solid blue" }
             avancar(e.srcElement.id.replace('dm',''))
-            this.style.border = "thin solid red"
+            this.style.border = "thin solid red";
         }
     }
 
@@ -177,9 +177,9 @@ window.onload = function(){
     function ajuste(){
         for(img of imagens){
             if(img.style.left == "0px") {
-                img.style.zIndex = '2'
+                img.style.zIndex = '2';
             } else {
-                img.style.zIndex = '1'
+                img.style.zIndex = '1';
             }
         }
     }
